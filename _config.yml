@@ -1,8 +1,5 @@
-#theme: jekyll-agency
-#remote_theme: modakoda/agency-jekyll-theme
-
-url    : "" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "/modakoda-new" # the subpath of your site, e.g. /blog
+url    : "https://modakoda.com"
+baseurl: ""
 
 title      : Modakoda Software Development
 formspree_form_path: f/mayllpep
@@ -10,7 +7,7 @@ description: "Agile Software Development and Support Services"
 author     : Modakoda
 logo:     #optional, defaults to site title
   path: assets\img\logo.png
-  height: 50 #height in px, defaults to 52px
+  height: 50
 
 analytics:
   google: G-G2DF9L3BTG
@@ -19,6 +16,3 @@ collections:
   portfolio:
 
 markdown: kramdown
-
-#plugins:
-#  - jekyll-remote-theme
