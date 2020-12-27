@@ -1,13 +1,13 @@
 ---
 title: Hansa Eule DE
 subtitle: Insurance E-Commerce Software
-image: https://raw.githubusercontent.com/mkazinauskas/modakoda-new/master/assets/img/portfolio/01-full.jpg
+image: assets/img/portfolio/01-full.jpg
 alt: Hansa Eule Insurance System
 
 caption:
   title: Hansa Eule DE
   subtitle: Insurance E-Commerce Software
-  thumbnail: https://raw.githubusercontent.com/mkazinauskas/modakoda-new/master/assets/img/portfolio/01-thumbnail.jpg
+  thumbnail: assets/img/portfolio/01-thumbnail.jpg
 ---
 Insurance retail company, operating in Germany. We have successfuly delivered insurance policy issuancce solution with e-commerce and management dashboard. After finalization this project was supported by our Modakoda. 
 
