@@ -1,25 +1,11 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that.
-# This file is *NOT* reloaded automatically when you use 'bundle exec jekyll serve'. 
-# If you change this file, please restart the server process.
-
-# Site settings
-# are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-
 #theme: jekyll-agency
-remote_theme: modakoda/agency-jekyll-theme
+#remote_theme: modakoda/agency-jekyll-theme
 
 url    : "" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "/modakoda-new" # the subpath of your site, e.g. /blog
 
 title      : Modakoda Software Development
-email      : info@modakoda.com #this is also the email contact forms will go to
-formspree_form_path: mayllpep
+formspree_form_path: f/mayllpep
 description: "Agile Software Development and Support Services"
 author     : Modakoda
 logo:     #optional, defaults to site title
@@ -34,5 +20,5 @@ collections:
 
 markdown: kramdown
 
-plugins:
-  - jekyll-remote-theme
+#plugins:
+#  - jekyll-remote-theme
