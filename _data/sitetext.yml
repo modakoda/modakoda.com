@@ -1,59 +1,57 @@
 header:
-    title: Welcome to our Studio!
+    title: Welcome to our Software Development Company!
     text: It's Nice To Meet You
     button: Tell Me More
-    buttonlink: "#services"
+    buttonlink: "#services" # "#{section}" or "URL/page link"
 
 services:
     title: "Services"
-    text: "Lorem ipsum"
+    text: "We Help to Grow Your Business"
     section: services
     list:
-      - title: "E-Commerce"
-        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
-        icon: fas fa-shopping-cart #find more at https://fontawesome.com/icons
-      - title: "Responsive Design"
-        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
-        icon: fas fa-laptop       
-      - title: "[Markdown](https://en.wikipedia.org/wiki/Markdown)"
-        desc: "Your description here, full **Markdown** support"
-        icon: fab fa-markdown
+      - title: "Software Development"
+        desc: "Software Design and Development with full product lifecycle support."
+        icon: fas fa-laptop #find more at https://fontawesome.com/icons
+      - title: "Process Automation"
+        desc: "Review and Automate manual processes in your business to perform faster in the market."
+        icon: fas fa-chart-line      
+      - title: "Support"
+        desc: "Already have a product? We are ready to support it."
+        icon: fas fa-headset
 
 portfolio:
     title: "Portfolio"
-    text: "Lorem ipsum dolor sit amet consectetur."
+    text: "We are proud of our work."
     section: portfolio
-    closebutton: "Close Project"
     
 
 timeline:
     title: "About" 
-    text: "Lorem ipsum timeline"
+    text: "This is how our journey looks like."
     section: timeline
-    # left is the default
-    #start_align: "left"
     events:
-      - title: "Our Humble Beginnings"
-        year: "2009-2011"
-        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!"
+      - title: "Company established"
+        year: "2016"
+        desc: "Together with co-workers we have started our journey and established Modakoda company."
         image: assets/img/timeline/1.jpg
         alt: 
-      - title: "An Agency is Born"
-        year: "March 2011"
-        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!"
+        align: left
+      - title: "Contract with Hansa Eule"
+        year: "2016"
+        desc: "Our first partner joined to start completely new product - car insurance business in Germany backed by Gefion."
         image: assets/img/timeline/2.jpg
         alt: 
-      - title: "Jekyll Theme is created"
-        year: "2019"
-        desc: "Ravi Riley converted Agency, a Bootstrap-based theme, into a Jekyll theme. The Jekyll theme can be installed as a Ruby gem, or remotely. For more information, visit the documentation."
+        align: right
+      - title: "Contract with Polins"
+        year: "2017"
+        desc: "Due to our successful launch of insurance product in Germany, our new partners decided to make a contract with us. We have created a new produt in PL market."
         image: assets/img/timeline/3.jpg
-        alt: image alt text
-      - title: "Title"
-        year: "2009-2011"
-        desc: "Your description here, **Markdown** is fully supported."
+        alt: image alt text      
+      - title: "Online Radio Search"
+        year: "2019"
+        desc: "Together with our great minds, we found opportunity to create a platform for searching and listening of online radio stations. This was a simple and useful product among Android users."
         image: assets/img/timeline/4.jpg
         alt: 
-        # you can enforce the aligment
         align: right
     end: "Be Part <br> of Our <br> Story!"
 
@@ -67,74 +65,54 @@ clients:
     max-height: 100px
     horizontal-scrolling: "" #"yes/no"
     list:
-      - title: "envato"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/envato.jpg
-      - title: "designmodo"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/designmodo.jpg
-      - title: "themeforest"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/themeforest.jpg
-      - title: "Creative Market"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/creative-market.jpg
+      - title: "hansa eule"
+        url: https://service.hansa-eule.de
+        logo: assets/img/clients/hansa-eule.jpg
+      - title: "polins"
+        url: https://polins.pl
+        logo: assets/img/clients/polins.jpg
     
 team:
     title: "OUR AMAZING TEAM"
-    text: "Lorem ipsum dolor sit amet consectetur."
-    subtext: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde. **Markdown** supported.
+    text: "We are here for your company to succeed"
+    subtext: We are highly motivated Software Development professionals passionate about our work. Everything is possible with us.
     section: team
     people:
-      - name: "Kay Garland"
-        role: "Lead Designer"
-        image: assets/img/team/500x500.jpg
+      - name: "Modestas"
+        role: "Lead Developer"
+        image: assets/img/team/1.jpg
         social:
-          - url: https://twitter.com
-            icon: fab fa-twitter
-          - url: https://facebook.com
-            icon: fab fa-facebook-f
-          - url: https://linkedin.com
+          - url: https://www.linkedin.com/in/modestas-ka%C5%BEinauskas-14a87250/
             icon: fab fa-linkedin-in
-      - name: "Larry Parker"
-        role: "Lead Marketer"
+          - url: https://github.com/mkazinauskas
+            icon: fab fa-github
+      - name: "Mindaugas"
+        role: "Lead Developer"
         image: assets/img/team/2.jpg
         social:
-          - url: https://twitter.com
-            icon: fab fa-twitter
           - url: https://facebook.com
             icon: fab fa-facebook-f
-          - url: https://linkedin.com
+          - url: https://www.linkedin.com/in/mindaugasbaranauskas
             icon: fab fa-linkedin-in
-      - name: "Diana Perterson"
-        role: "Lead Developer"
-        image: assets/img/team/500x500.jpg
+      - name: "Živilė"
+        role: "Business Analyst"
+        image: assets/img/team/3.jpg
         social:
-          - url: https://twitter.com
-            icon: fab fa-twitter
-          - url: https://facebook.com
-            icon: fab fa-facebook-f
-          - url: https://linkedin.com
+          - url: https://www.linkedin.com/in/zivile-baranauskiene-2097064/
             icon: fab fa-linkedin-in
           
 contact:
     title: "Contact Us"
-    text: "Lorem ipsum or call 123456789"
+    text: "Let's talk <a href=\"tel:+370 600 74687\" alt=\"contact us\">+370 600 74687</a>"
     section: contact
     
 footer:
     legal: "Privacy Policy"
-    social:
-      - url: https://twitter.com
-        icon: "fab fa-twitter"  
-      - url: https://facebook.com
+    social: 
+      - url: https://www.facebook.com/Modakoda-104451278247155
         icon: "fab fa-facebook-f"
-      - url: https://linkedin.com
-        icon: "fab fa-linkedin-in"
-      - url: https://github.com/raviriley/agency-jekyll-theme
+      - url: https://github.com/modakoda
         icon: "fab fa-github"
-      - url: https://instagram.com
-        icon: "fab fa-instagram"
 
 
 # {{ site.data.sitetext.ex.ex | markdownify | default: example }}

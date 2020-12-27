@@ -1,18 +1,19 @@
 ---
-title: Project Name
-subtitle: Lorem ipsum dolor sit amet consectetur.
-image: https://raw.githubusercontent.com/BlackrockDigital/startbootstrap-agency/master/src/assets/img/portfolio/02-full.jpg
-alt: Keep Exploring
+title: Polins
+subtitle: Polish car insurance company
+image: https://raw.githubusercontent.com/mkazinauskas/modakoda-new/master/assets/img/portfolio/02-full.jpg
+alt: PL insurance company
 
 caption:
-  title: Explore
-  subtitle: Graphic Design
-  thumbnail: https://raw.githubusercontent.com/BlackrockDigital/startbootstrap-agency/master/src/assets/img/portfolio/02-thumbnail.jpg
+  title: Polins
+  subtitle: Insurnace E-commerce Software
+  thumbnail: https://raw.githubusercontent.com/mkazinauskas/modakoda-new/master/assets/img/portfolio/02-thumbnail.jpg
 ---
-Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!
+
+Polins is part of Gefion Insurance A / S is a Danish licensed company operating in European countries, providing comprehensive services to medium-sized enterprises, actively cooperating with intermediaries and brokers. Our product has helped to deliver customer centric solution to the market in the fastest time possible.
 
 {:.list-inline}
-- Date: January 2017
-- Client: Explore
-- Category: Graphic Design
+- Date: March 2017
+- Client: Polins
+- Category: Insurnace E-commerce Software
 
