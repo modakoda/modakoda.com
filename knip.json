@@ -9,6 +9,8 @@
   "project": ["src/**/*.{ts,tsx}"],
   "ignoreDependencies": [
     "tailwindcss",
-    "nitro"
+    "nitro",
+    "@vitejs/plugin-react",
+    "tw-animate-css"
   ]
 }
