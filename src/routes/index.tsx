@@ -470,7 +470,7 @@ function Work() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
           {WORK.map((w, i) => (
-            <a href="#" key={i} className="group block">
+            <a href="#contact" key={i} className="group block">
               <div className="aspect-[4/3] overflow-hidden bg-background mb-5">
                 <img
                   src={w.img}
