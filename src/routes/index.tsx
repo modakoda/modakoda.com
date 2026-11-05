@@ -7,6 +7,7 @@ import work3 from "@/assets/work-3.jpg";
 import work4 from "@/assets/work-4.jpg";
 import work5 from "@/assets/work-5.jpg";
 import work6 from "@/assets/work-6.jpg";
+import work7 from "@/assets/work-7.webp";
 import modakodaLogo from "@/assets/modakoda-logo.png";
 
 export const Route = createFileRoute("/")({
@@ -59,28 +60,21 @@ const SERVICES = [
 
 const WORK = [
   {
-    img: work1,
-    client: "Hansa Eule",
-    region: "Germany",
-    title: "Insurance commerce platform",
-    discipline: "Product engineering",
-    year: "2017",
-  },
-  {
-    img: work3,
-    client: "Radio Station Index",
+    img: work7,
+    client: "Open PDF Editor",
     region: "Global",
-    title: "Search engine & CMS",
-    discipline: "Infrastructure",
-    year: "2021",
+    title: "Open-source desktop PDF editor",
+    discipline: "Own product",
+    year: "2026",
+    href: "https://open-pdf-editor.modakoda.com",
   },
   {
-    img: work2,
-    client: "Polins",
-    region: "Europe",
-    title: "Insurance Brokerage system",
-    discipline: "Platform & automation",
-    year: "2022",
+    img: work6,
+    client: "Advanced Google Results Aggregator",
+    region: "Global",
+    title: "Search results analysis system",
+    discipline: "Data & infrastructure",
+    year: "2025",
   },
   {
     img: work4,
@@ -99,12 +93,28 @@ const WORK = [
     year: "2024",
   },
   {
-    img: work6,
-    client: "Advanced Google Results Aggregator",
+    img: work2,
+    client: "Polins",
+    region: "Europe",
+    title: "Insurance Brokerage system",
+    discipline: "Platform & automation",
+    year: "2022",
+  },
+  {
+    img: work3,
+    client: "Radio Station Index",
     region: "Global",
-    title: "Search results analysis system",
-    discipline: "Data & infrastructure",
-    year: "2025",
+    title: "Search engine & CMS",
+    discipline: "Infrastructure",
+    year: "2021",
+  },
+  {
+    img: work1,
+    client: "Hansa Eule",
+    region: "Germany",
+    title: "Insurance commerce platform",
+    discipline: "Product engineering",
+    year: "2017",
   },
 ];
 
@@ -470,7 +480,13 @@ function Work() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
           {WORK.map((w, i) => (
-            <a href="#contact" key={i} className="group block">
+            <a
+              href={w.href ?? "#contact"}
+              target={w.href ? "_blank" : undefined}
+              rel={w.href ? "noopener noreferrer" : undefined}
+              key={i}
+              className="group block"
+            >
               <div className="aspect-[4/3] overflow-hidden bg-background mb-5">
                 <img
                   src={w.img}
