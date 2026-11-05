@@ -461,7 +461,12 @@ function Services() {
   );
 }
 
+const WORK_VISIBLE = 6;
+
 function Work() {
+  const [expanded, setExpanded] = useState(false);
+  const shown = expanded ? WORK : WORK.slice(0, WORK_VISIBLE);
+
   return (
     <section id="work" className="py-28 lg:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
@@ -479,7 +484,7 @@ function Work() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-          {WORK.map((w, i) => (
+          {shown.map((w, i) => (
             <a
               href={w.href ?? "#contact"}
               target={w.href ? "_blank" : undefined}
@@ -515,6 +520,18 @@ function Work() {
             </a>
           ))}
         </div>
+
+        {WORK.length > WORK_VISIBLE && (
+          <div className="mt-16 flex justify-center">
+            <button
+              onClick={() => setExpanded((v) => !v)}
+              aria-expanded={expanded}
+              className="text-xs eyebrow border border-foreground/80 px-4 py-2 rounded-full hover:bg-foreground hover:text-background transition-colors"
+            >
+              {expanded ? "Show less" : `Show all ${WORK.length} projects`}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
