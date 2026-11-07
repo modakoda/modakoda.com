@@ -553,7 +553,7 @@ function Work() {
                   alt={w.title}
                   loading="lazy"
                   width={1024}
-                  height={1280}
+                  height={768}
                   className="w-full h-full object-cover [@media(hover:hover)]:blur-[1px] [@media(hover:hover)]:grayscale transition-all duration-[1200ms] group-hover:scale-105 group-hover:blur-0 group-hover:grayscale-0"
                 />
               </div>
