@@ -612,7 +612,7 @@ function Company() {
             </ul>
             <div className="mt-12 grid grid-cols-3 gap-6">
               {[
-                ["09", "Years building"],
+                [String(new Date().getFullYear() - 2016), "Years building"],
                 ["40+", "Shipped products"],
                 ["6", "Countries served"],
               ].map(([n, l]) => (
