@@ -10,24 +10,63 @@ import work6 from "@/assets/work-6.jpg";
 import work7 from "@/assets/work-7.webp";
 import modakodaLogo from "@/assets/modakoda-logo.png";
 
+const SITE_URL = "https://modakoda.com";
+const DESCRIPTION =
+  "Software development company in Vilnius, Lithuania. Custom software, AI integration and process automation for insurance, fintech and media teams.";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Modakoda — Software Development & Engineering Company" },
-      {
-        name: "description",
-        content:
-          "A small software company building thoughtful products, automating workflows, and supporting teams across the full product lifecycle.",
-      },
+      { name: "description", content: DESCRIPTION },
+      { name: "robots", content: "index, follow" },
+      { name: "theme-color", content: "#f5f3ee" },
+      { property: "og:site_name", content: "Modakoda" },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:url", content: `${SITE_URL}/` },
       {
         property: "og:title",
         content: "Modakoda — Software Development Company",
       },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:image", content: `${SITE_URL}${heroImg}` },
+      { property: "og:image:width", content: "1920" },
+      { property: "og:image:height", content: "1080" },
+      { property: "og:image:alt", content: "Modakoda software studio" },
+      { name: "twitter:card", content: "summary_large_image" },
       {
-        property: "og:description",
-        content: "Quietly considered software. Built to last.",
+        name: "twitter:title",
+        content: "Modakoda — Software Development Company",
+      },
+      { name: "twitter:description", content: DESCRIPTION },
+      { name: "twitter:image", content: `${SITE_URL}${heroImg}` },
+      {
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Modakoda",
+          url: `${SITE_URL}/`,
+          logo: `${SITE_URL}${modakodaLogo}`,
+          email: "info@modakoda.com",
+          description: DESCRIPTION,
+          vatID: "LT100012594513",
+          identifier: "304307868",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Vilnius",
+            addressCountry: "LT",
+          },
+          areaServed: "Worldwide",
+          knowsAbout: [
+            "Software development",
+            "Process automation",
+            "LLM integration",
+            "AI infrastructure",
+          ],
+        },
       },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
   }),
   component: Index,
 });
@@ -185,6 +224,8 @@ function Nav() {
           <img
             src={modakodaLogo}
             alt="Modakoda"
+            width={436}
+            height={54}
             className="h-12 w-auto max-w-[220px] object-contain"
           />
         </a>
@@ -273,8 +314,9 @@ function Hero() {
           <img
             src={heroImg}
             alt="Modern software development office"
-            width={1600}
-            height={1200}
+            width={1920}
+            height={1080}
+            fetchPriority="high"
             className="w-full h-[50vh] lg:h-[60vh] min-h-[360px] object-cover blur-[3px] scale-105"
           />
           <div className="absolute inset-0 bg-foreground/40" />
