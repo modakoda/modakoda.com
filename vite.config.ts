@@ -15,6 +15,8 @@ export default defineConfig({
         enabled: true,
       },
       pages: [{ path: "/" }],
+      // GitHub Pages serves 404.html for unknown paths; the SPA shell boots the router, which renders notFoundComponent.
+      spa: { maskPath: "/?shell", prerender: { outputPath: "/404" } },
     }),
     react(),
   ],
