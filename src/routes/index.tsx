@@ -600,7 +600,7 @@ function Company() {
           <div className="lg:col-span-5 lg:sticky lg:top-28 self-start">
             <div className="eyebrow mb-6">§ Company</div>
             <h2 className="text-display text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.02]">
-              Built on precision. Trusted by results.
+              Built on precision. Measured by results.
             </h2>
             <p className="mt-8 text-muted-foreground text-lg leading-relaxed max-w-md">
               Since 2016, Modakoda has delivered mission-critical software for
@@ -682,7 +682,7 @@ function Contact() {
           </div>
           <div>
             <div className="eyebrow !text-background/50 mb-3">Hours</div>
-            <div className="font-display text-xl md:text-2xl">Mon — Fri</div>
+            <div className="font-display text-xl md:text-2xl">Mon–Fri</div>
           </div>
         </div>
       </div>
