@@ -90,7 +90,9 @@
     border-color: var(--color-border);
   }
   html {
-    scroll-behavior: smooth;
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
   }
   body {
     background-color: var(--color-background);
@@ -149,8 +151,12 @@
 }
 
 @utility animate-rise {
-  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  @media (prefers-reduced-motion: no-preference) {
+    animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
 }
 @utility animate-marquee {
-  animation: marquee 40s linear infinite;
+  @media (prefers-reduced-motion: no-preference) {
+    animation: marquee 40s linear infinite;
+  }
 }
