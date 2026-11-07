@@ -543,7 +543,7 @@ function Work() {
                   loading="lazy"
                   width={1024}
                   height={1280}
-                  className="w-full h-full object-cover blur-[1px] grayscale transition-all duration-[1200ms] group-hover:scale-105 group-hover:blur-0 group-hover:grayscale-0"
+                  className="w-full h-full object-cover [@media(hover:hover)]:blur-[1px] [@media(hover:hover)]:grayscale transition-all duration-[1200ms] group-hover:scale-105 group-hover:blur-0 group-hover:grayscale-0"
                 />
               </div>
               <div className="flex items-baseline justify-between gap-4 mb-2">
