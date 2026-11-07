@@ -207,13 +207,21 @@ function Nav() {
     function handleScroll() {
       setOpen(false);
     }
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setOpen(false);
+        buttonRef.current?.focus();
+      }
+    }
     if (open) {
       document.addEventListener("click", handleClick);
       document.addEventListener("scroll", handleScroll, true);
+      document.addEventListener("keydown", handleKey);
     }
     return () => {
       document.removeEventListener("click", handleClick);
       document.removeEventListener("scroll", handleScroll, true);
+      document.removeEventListener("keydown", handleKey);
     };
   }, [open]);
 
@@ -254,6 +262,8 @@ function Nav() {
             onClick={() => setOpen((v) => !v)}
             className="md:hidden relative w-8 h-8 flex items-center justify-center"
             aria-label="Toggle menu"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
           >
             <span className="sr-only">Menu</span>
             <div
@@ -278,6 +288,7 @@ function Nav() {
 
       {open && (
         <div
+          id="mobile-menu"
           ref={menuRef}
           className="md:hidden absolute top-16 left-0 right-0 bg-background border-b border-border animate-rise"
         >
