@@ -72,9 +72,9 @@ export const Route = createFileRoute("/")({
 });
 
 const NAV = [
-  { label: "Work", href: "#work" },
   { label: "Practice", href: "#practice" },
   { label: "AI", href: "#ai" },
+  { label: "Work", href: "#work" },
   { label: "Company", href: "#company" },
   { label: "Contact", href: "#contact" },
 ];
