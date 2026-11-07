@@ -393,11 +393,13 @@ function Marquee() {
   ];
   return (
     <section className="hairline border-y border-border py-6 overflow-hidden">
-      <div className="flex animate-marquee whitespace-nowrap gap-16 will-change-transform">
-        {[...items, ...items, ...items].map((s, i) => (
+      {/* Two identical halves with per-item padding so -50% lands exactly on the second copy. */}
+      <div className="flex animate-marquee whitespace-nowrap will-change-transform">
+        {[...items, ...items].map((s, i) => (
           <span
             key={i}
-            className="text-display text-3xl md:text-5xl font-light text-foreground/80"
+            aria-hidden={i >= items.length}
+            className="pr-16 text-display text-3xl md:text-5xl font-light text-foreground/80"
           >
             {s} <span className="inline-block mx-6 text-foreground/30">✦</span>
           </span>
