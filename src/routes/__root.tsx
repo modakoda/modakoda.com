@@ -1,8 +1,7 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
-  createRootRouteWithContext,
+  createRootRoute,
   useRouter,
   HeadContent,
   Scripts,
@@ -79,59 +78,57 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
-  {
-    head: () => ({
-      meta: [
-        { charSet: "utf-8" },
-        { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { title: "Modakoda — Software Development & Engineering Company" },
-        {
-          name: "description",
-          content:
-            "Modakoda is a software development company building thoughtful products, automating workflows, and supporting teams across the full product lifecycle.",
-        },
-        { name: "author", content: "Modakoda" },
-        {
-          property: "og:title",
-          content: "Modakoda — Software Development & Engineering Company",
-        },
-        {
-          property: "og:description",
-          content: "Quietly considered software. Built to last.",
-        },
-        { property: "og:type", content: "website" },
-        { name: "twitter:card", content: "summary" },
-      ],
-      links: [
-        {
-          rel: "icon",
-          type: "image/x-icon",
-          href: "/favicon.ico",
-        },
-        {
-          rel: "icon",
-          type: "image/svg+xml",
-          href: "/favicon.svg",
-        },
-        {
-          rel: "icon",
-          type: "image/png",
-          sizes: "32x32",
-          href: "/favicon.png",
-        },
-        {
-          rel: "stylesheet",
-          href: appCss,
-        },
-      ],
-    }),
-    shellComponent: RootShell,
-    component: RootComponent,
-    notFoundComponent: NotFoundComponent,
-    errorComponent: ErrorComponent,
-  },
-);
+export const Route = createRootRoute({
+  head: () => ({
+    meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "Modakoda — Software Development & Engineering Company" },
+      {
+        name: "description",
+        content:
+          "Modakoda is a software development company building thoughtful products, automating workflows, and supporting teams across the full product lifecycle.",
+      },
+      { name: "author", content: "Modakoda" },
+      {
+        property: "og:title",
+        content: "Modakoda — Software Development & Engineering Company",
+      },
+      {
+        property: "og:description",
+        content: "Quietly considered software. Built to last.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+    links: [
+      {
+        rel: "icon",
+        type: "image/x-icon",
+        href: "/favicon.ico",
+      },
+      {
+        rel: "icon",
+        type: "image/svg+xml",
+        href: "/favicon.svg",
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: "/favicon.png",
+      },
+      {
+        rel: "stylesheet",
+        href: appCss,
+      },
+    ],
+  }),
+  shellComponent: RootShell,
+  component: RootComponent,
+  notFoundComponent: NotFoundComponent,
+  errorComponent: ErrorComponent,
+});
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
@@ -148,12 +145,6 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-    </QueryClientProvider>
-  );
+  // Required: nested routes render here. Removing <Outlet /> breaks all child routes.
+  return <Outlet />;
 }
