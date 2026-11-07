@@ -729,7 +729,7 @@ function Footer() {
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10 flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
         <div>
           <div>© {new Date().getFullYear()} Modakoda. All rights reserved.</div>
-          <div className="mt-1 text-muted-foreground/70 flex items-center gap-2">
+          <div className="mt-1 flex items-center gap-2">
             <span>
               Reg. code <CopyableValue value="304307868" />
             </span>
