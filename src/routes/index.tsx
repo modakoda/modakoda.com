@@ -559,7 +559,7 @@ function Work() {
                 />
               </div>
               <div className="flex items-baseline justify-between gap-4 mb-2">
-                <div className="font-display text-lg">{w.client}</div>
+                <h3 className="font-display text-lg">{w.client}</h3>
                 <div className="eyebrow !text-xs">{w.year}</div>
               </div>
               <div className="text-muted-foreground text-sm leading-relaxed">
