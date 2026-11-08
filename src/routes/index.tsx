@@ -30,8 +30,8 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:image", content: `${SITE_URL}${heroImg}` },
-      { property: "og:image:width", content: "1920" },
-      { property: "og:image:height", content: "1080" },
+      { property: "og:image:width", content: "1280" },
+      { property: "og:image:height", content: "720" },
       { property: "og:image:alt", content: "Modakoda software studio" },
       { name: "twitter:card", content: "summary_large_image" },
       {
@@ -326,8 +326,8 @@ function Hero() {
           <img
             src={heroImg}
             alt="Modern software development office"
-            width={1920}
-            height={1080}
+            width={1280}
+            height={720}
             fetchPriority="high"
             className="w-full h-[50vh] lg:h-[60vh] min-h-[360px] object-cover blur-[3px] scale-105"
           />
