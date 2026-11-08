@@ -325,7 +325,7 @@ function Hero() {
         <div className="relative overflow-hidden rounded-sm animate-rise">
           <img
             src={heroImg}
-            alt="Modern software development office"
+            alt=""
             width={1280}
             height={720}
             fetchPriority="high"
