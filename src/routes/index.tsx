@@ -46,7 +46,8 @@ export const Route = createFileRoute("/")({
           "@type": "Organization",
           name: "Modakoda",
           url: `${SITE_URL}/`,
-          logo: `${SITE_URL}${modakodaLogo}`,
+          // Google needs a logo of at least 112x112; the wordmark is 436x54.
+          logo: `${SITE_URL}/favicon.png`,
           email: "info@modakoda.com",
           description: DESCRIPTION,
           vatID: "LT100012594513",
