@@ -559,7 +559,10 @@ function Work() {
                 />
               </div>
               <div className="flex items-baseline justify-between gap-4 mb-2">
-                <h3 className="font-display text-lg">{w.client}</h3>
+                <h3 className="font-display text-lg">
+                  {w.client}
+                  {w.href && <span aria-hidden="true"> ↗</span>}
+                </h3>
                 <div className="eyebrow !text-xs">{w.year}</div>
               </div>
               <div className="text-muted-foreground text-sm leading-relaxed">
