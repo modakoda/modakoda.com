@@ -83,23 +83,8 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Modakoda — Software Development & Engineering Company" },
-      {
-        name: "description",
-        content:
-          "Modakoda is a software development company building thoughtful products, automating workflows, and supporting teams across the full product lifecycle.",
-      },
       { name: "author", content: "Modakoda" },
-      {
-        property: "og:title",
-        content: "Modakoda — Software Development & Engineering Company",
-      },
-      {
-        property: "og:description",
-        content: "Quietly considered software. Built to last.",
-      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
     ],
     links: [
       {
