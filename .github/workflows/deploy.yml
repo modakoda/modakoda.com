@@ -25,6 +25,12 @@ jobs:
       - name: Run Knip
         run: bun run knip
 
+      - name: Lint
+        run: bun run lint
+
+      - name: Typecheck
+        run: bunx tsc --noEmit
+
       - name: Build
         run: bun run build
 
