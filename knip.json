@@ -7,10 +7,5 @@
     "src/routes/**/*.tsx"
   ],
   "project": ["src/**/*.{ts,tsx}"],
-  "ignoreDependencies": [
-    "tailwindcss",
-    "nitro",
-    "@vitejs/plugin-react",
-    "tw-animate-css"
-  ]
+  "ignoreDependencies": ["tailwindcss", "nitro", "tw-animate-css"]
 }
