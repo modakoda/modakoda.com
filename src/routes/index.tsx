@@ -551,7 +551,7 @@ function Services() {
           title="Three quiet disciplines, practiced with attention."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
           {SERVICES.map((s) => (
             <article
               key={s.no}
@@ -560,7 +560,7 @@ function Services() {
               <span className="font-display text-sm text-muted-foreground">
                 {s.no}
               </span>
-              <h3 className="mt-8 md:mt-20 font-display text-2xl md:text-3xl mb-4 leading-tight">
+              <h3 className="mt-8 md:mt-20 font-display text-2xl md:text-3xl xl:text-2xl 2xl:text-3xl mb-4 leading-tight">
                 {s.title}
               </h3>
               <p className="text-muted-foreground leading-relaxed">{s.body}</p>
