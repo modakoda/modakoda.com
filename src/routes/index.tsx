@@ -386,7 +386,7 @@ function Hero() {
 
             <dl className="mt-14 lg:mt-24 grid grid-cols-3 gap-4 border-t border-background/15 pt-6 sm:pt-8">
               {stats.map(([n, l]) => (
-                <div key={l} className="flex flex-col-reverse gap-1.5">
+                <div key={l} className="flex flex-col-reverse justify-end gap-1.5">
                   <dt className="text-xs sm:text-sm text-background/60">{l}</dt>
                   <dd className="text-display text-3xl sm:text-5xl font-medium">
                     {n}
