@@ -701,36 +701,41 @@ function Contact() {
             aria-hidden="true"
             className="pointer-events-none absolute -right-40 -bottom-40 size-80 rotate-45 border border-background/10"
           />
-          <div className="relative">
-            <Eyebrow className="!text-background/60 mb-6">
-              Correspondence
-            </Eyebrow>
-            <h2 className="text-display text-[clamp(2.5rem,7vw,6rem)] font-medium max-w-5xl text-balance">
-              Have something worth building?
-            </h2>
-            <p className="mt-6 sm:mt-8 max-w-xl text-background/70 text-base sm:text-lg leading-relaxed">
-              We accept a select number of new engagements each quarter. Tell us
-              about your product, your team, and the problem you are trying to
-              solve. We typically respond within one business day.
-            </p>
-            <a
-              href="mailto:info@modakoda.com"
-              className={`${BTN} mt-8 w-full sm:w-auto !min-h-14 !px-8 !text-base sm:!text-lg font-display bg-signal text-foreground hover:bg-background`}
-            >
-              <span dangerouslySetInnerHTML={emailOff("info@modakoda.com")} />
-              <span aria-hidden="true">&nbsp;→</span>
-            </a>
-            <dl className="mt-12 sm:mt-16 grid grid-cols-2 gap-6 border-t border-background/15 pt-8 max-w-xl">
-              {[
-                ["Company", "Vilnius, Lithuania"],
-                ["Hours", "Mon–Fri"],
-              ].map(([l, v]) => (
-                <div key={l}>
-                  <dt className="eyebrow !text-background/50 mb-2">{l}</dt>
-                  <dd className="font-display text-lg sm:text-2xl">{v}</dd>
-                </div>
-              ))}
-            </dl>
+          {/* 2xl: heading left, details right, so the wide card isn't half empty */}
+          <div className="relative 2xl:grid 2xl:grid-cols-[3fr_2fr] 2xl:gap-12 2xl:items-end">
+            <div>
+              <Eyebrow className="!text-background/60 mb-6">
+                Correspondence
+              </Eyebrow>
+              <h2 className="text-display text-[clamp(2.5rem,7vw,6rem)] font-medium max-w-5xl text-balance">
+                Have something worth building?
+              </h2>
+            </div>
+            <div>
+              <p className="mt-6 sm:mt-8 max-w-xl text-background/70 text-base sm:text-lg leading-relaxed">
+                We accept a select number of new engagements each quarter. Tell us
+                about your product, your team, and the problem you are trying to
+                solve. We typically respond within one business day.
+              </p>
+              <a
+                href="mailto:info@modakoda.com"
+                className={`${BTN} mt-8 w-full sm:w-auto !min-h-14 !px-8 !text-base sm:!text-lg font-display bg-signal text-foreground hover:bg-background`}
+              >
+                <span dangerouslySetInnerHTML={emailOff("info@modakoda.com")} />
+                <span aria-hidden="true">&nbsp;→</span>
+              </a>
+              <dl className="mt-12 sm:mt-16 grid grid-cols-2 gap-6 border-t border-background/15 pt-8 max-w-xl">
+                {[
+                  ["Company", "Vilnius, Lithuania"],
+                  ["Hours", "Mon–Fri"],
+                ].map(([l, v]) => (
+                  <div key={l}>
+                    <dt className="eyebrow !text-background/50 mb-2">{l}</dt>
+                    <dd className="font-display text-lg sm:text-2xl">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           </div>
         </div>
       </div>
