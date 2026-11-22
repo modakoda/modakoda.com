@@ -182,17 +182,6 @@ const H2 =
   "text-display text-[clamp(2.25rem,5.5vw,4.5rem)] font-medium text-balance";
 const BTN =
   "inline-flex min-h-12 items-center justify-center rounded-full px-6 text-sm font-medium transition-colors";
-// Angle brackets stand in for each O; same shape as public/favicon.svg.
-const LOGO_BRACKETS = (
-  <svg viewBox="0 0 100 100" className="size-[0.8em] text-signal">
-    <path
-      d="M40 10 8 50 40 90M60 10 92 50 60 90"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="15"
-    />
-  </svg>
-);
 
 const CODE = {
   dim: "text-background/40",
@@ -298,9 +287,11 @@ function Nav() {
           <span className="sr-only">Modakoda</span>
           <span
             aria-hidden="true"
-            className="flex items-center gap-[0.08em] font-display text-2xl lg:text-[1.75rem] font-semibold leading-none tracking-[0.06em]"
+            className="font-mono text-lg lg:text-xl font-semibold leading-none tracking-tight"
           >
-            M{LOGO_BRACKETS}DAK{LOGO_BRACKETS}DA
+            <span className="text-signal">&lt;</span>
+            modakoda
+            <span className="text-signal">/&gt;</span>
           </span>
         </a>
 
