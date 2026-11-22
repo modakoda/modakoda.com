@@ -47,7 +47,7 @@
   --ink: oklch(0.205 0.005 90); /* #2d2d2d */
   --ink-deep: oklch(0.115 0.003 90); /* #0d0d0d */
   --rule: oklch(0.205 0.005 90 / 12%);
-  --signal: oklch(0.66 0.2 150); /* accent green, #00b248; too light for body text on paper */
+  --signal: oklch(0.65 0.2 260); /* accent blue, #3e89ff; too light for body text on paper */
 
   --background: var(--paper);
   --foreground: var(--ink-deep);
