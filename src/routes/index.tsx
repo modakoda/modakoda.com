@@ -15,62 +15,68 @@ const DESCRIPTION =
   "Software development company in Vilnius, Lithuania. Custom software, AI integration and process automation for insurance, fintech and media teams.";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Modakoda — Software Development & Engineering Company" },
-      { name: "description", content: DESCRIPTION },
-      { name: "robots", content: "index, follow" },
-      { name: "theme-color", content: "#f5f3ee" },
-      { property: "og:site_name", content: "Modakoda" },
-      { property: "og:locale", content: "en_US" },
-      { property: "og:url", content: `${SITE_URL}/` },
-      {
-        property: "og:title",
-        content: "Modakoda — Software Development Company",
-      },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:image", content: `${SITE_URL}${heroImg}` },
-      { property: "og:image:width", content: "1280" },
-      { property: "og:image:height", content: "720" },
-      { property: "og:image:alt", content: "Modakoda software studio" },
-      { name: "twitter:card", content: "summary_large_image" },
-      {
-        name: "twitter:title",
-        content: "Modakoda — Software Development Company",
-      },
-      { name: "twitter:description", content: DESCRIPTION },
-      { name: "twitter:image", content: `${SITE_URL}${heroImg}` },
-      {
-        "script:ld+json": {
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: "Modakoda",
-          url: `${SITE_URL}/`,
-          // Google needs a logo of at least 112x112; the wordmark is 436x54.
-          logo: `${SITE_URL}/favicon.png`,
-          email: "info@modakoda.com",
-          description: DESCRIPTION,
-          vatID: "LT100012594513",
-          identifier: "304307868",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Vilnius",
-            addressCountry: "LT",
-          },
-          areaServed: "Worldwide",
-          knowsAbout: [
-            "Software development",
-            "Process automation",
-            "LLM integration",
-            "AI infrastructure",
-          ],
-        },
-      },
-    ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
-  }),
+  head: ({ match }) => {
+    // The SPA shell (404.html) renders only the root route, leaving this match unloaded; it must not carry this page's meta.
+    if (match.status !== "success") return {};
+    return HEAD;
+  },
   component: Index,
 });
+
+const HEAD = {
+  meta: [
+    { title: "Modakoda — Software Development & Engineering Company" },
+    { name: "description", content: DESCRIPTION },
+    { name: "robots", content: "index, follow" },
+    { name: "theme-color", content: "#f5f3ee" },
+    { property: "og:site_name", content: "Modakoda" },
+    { property: "og:locale", content: "en_US" },
+    { property: "og:url", content: `${SITE_URL}/` },
+    {
+      property: "og:title",
+      content: "Modakoda — Software Development Company",
+    },
+    { property: "og:description", content: DESCRIPTION },
+    { property: "og:image", content: `${SITE_URL}${heroImg}` },
+    { property: "og:image:width", content: "1280" },
+    { property: "og:image:height", content: "720" },
+    { property: "og:image:alt", content: "Modakoda software studio" },
+    { name: "twitter:card", content: "summary_large_image" },
+    {
+      name: "twitter:title",
+      content: "Modakoda — Software Development Company",
+    },
+    { name: "twitter:description", content: DESCRIPTION },
+    { name: "twitter:image", content: `${SITE_URL}${heroImg}` },
+    {
+      "script:ld+json": {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Modakoda",
+        url: `${SITE_URL}/`,
+        // Google needs a logo of at least 112x112; the wordmark is 436x54.
+        logo: `${SITE_URL}/favicon.png`,
+        email: "info@modakoda.com",
+        description: DESCRIPTION,
+        vatID: "LT100012594513",
+        identifier: "304307868",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Vilnius",
+          addressCountry: "LT",
+        },
+        areaServed: "Worldwide",
+        knowsAbout: [
+          "Software development",
+          "Process automation",
+          "LLM integration",
+          "AI infrastructure",
+        ],
+      },
+    },
+  ],
+  links: [{ rel: "canonical", href: `${SITE_URL}/` }],
+};
 
 const NAV = [
   { label: "Practice", href: "#practice" },
