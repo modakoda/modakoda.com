@@ -585,7 +585,7 @@ function Services() {
           title="Three quiet disciplines, practiced with attention."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {SERVICES.map((s) => (
             <article
               key={s.no}
