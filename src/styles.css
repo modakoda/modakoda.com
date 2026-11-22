@@ -47,7 +47,7 @@
   --ink: oklch(0.205 0.005 90); /* #2d2d2d */
   --ink-deep: oklch(0.115 0.003 90); /* #0d0d0d */
   --rule: oklch(0.205 0.005 90 / 12%);
-  --signal: oklch(0.7 0.19 42); /* accent; dark text or dark backgrounds only */
+  --signal: oklch(0.66 0.2 150); /* accent green, #00b248; too light for body text on paper */
 
   --background: var(--paper);
   --foreground: var(--ink-deep);
@@ -125,9 +125,9 @@
 }
 
 @utility eyebrow {
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 500;
   color: var(--muted-foreground);

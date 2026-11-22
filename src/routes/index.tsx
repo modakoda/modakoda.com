@@ -182,17 +182,41 @@ const H2 =
   "text-display text-[clamp(2.25rem,5.5vw,4.5rem)] font-medium text-balance";
 const BTN =
   "inline-flex min-h-12 items-center justify-center rounded-full px-6 text-sm font-medium transition-colors";
-const LOGO_DIAMOND = (
-  <svg viewBox="0 0 100 100" className="size-[0.82em]">
+// Angle brackets stand in for each O; same shape as public/favicon.svg.
+const LOGO_BRACKETS = (
+  <svg viewBox="0 0 100 100" className="size-[0.8em] text-signal">
     <path
-      d="M50 8 92 50 50 92 8 50Z"
+      d="M40 10 8 50 40 90M60 10 92 50 60 90"
       fill="none"
       stroke="currentColor"
-      strokeWidth="13"
+      strokeWidth="15"
     />
-    <path d="M50 34 66 50 50 66 34 50Z" className="fill-signal" />
   </svg>
 );
+
+const CODE = {
+  dim: "text-background/40",
+  key: "text-signal",
+  str: "text-background",
+};
+// Decorative hero snippet as [text, colour] tokens.
+const HERO_CODE: [string, string?][] = [
+  ["// studio.ts\n", CODE.dim],
+  ["export const ", CODE.key],
+  ["studio = {\n  based: "],
+  ['"Vilnius"', CODE.str],
+  [",\n  since: "],
+  ["2016", CODE.str],
+  [",\n  sectors: [\n    "],
+  ['"insurance"', CODE.str],
+  [",\n    "],
+  ['"fintech"', CODE.str],
+  [",\n    "],
+  ['"media"', CODE.str],
+  [",\n  ],\n  outlasts: "],
+  ['"trends"', CODE.str],
+  [",\n};"],
+];
 
 function Index() {
   return (
@@ -222,7 +246,8 @@ function Eyebrow({
 }) {
   return (
     <div className={`eyebrow flex items-center gap-3 ${className}`}>
-      <span aria-hidden="true" className="size-1.5 rotate-45 bg-signal" />
+      {/* Terminal cursor block. */}
+      <span aria-hidden="true" className="h-3 w-1.5 bg-signal" />
       {children}
     </div>
   );
@@ -271,12 +296,11 @@ function Nav() {
       <div className={`${WRAP} h-16 flex items-center justify-between`}>
         <a href="#top" className="flex h-16 items-center">
           <span className="sr-only">Modakoda</span>
-          {/* Same diamond as public/favicon.svg stands in for each O. */}
           <span
             aria-hidden="true"
             className="flex items-center gap-[0.08em] font-display text-2xl lg:text-[1.75rem] font-semibold leading-none tracking-[0.06em]"
           >
-            M{LOGO_DIAMOND}DAK{LOGO_DIAMOND}DA
+            M{LOGO_BRACKETS}DAK{LOGO_BRACKETS}DA
           </span>
         </a>
 
@@ -285,7 +309,7 @@ function Nav() {
             <a
               key={n.href}
               href={n.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="font-mono text-[13px] text-muted-foreground hover:text-foreground transition-colors"
             >
               {n.label}
             </a>
@@ -364,21 +388,21 @@ function Hero() {
     <section id="top" className="pt-20 sm:pt-24">
       <div className={WRAP}>
         <div className="relative overflow-hidden rounded-3xl bg-foreground text-background px-6 pt-14 pb-8 sm:px-12 sm:pt-20 sm:pb-12 lg:px-20 lg:pt-28 animate-rise">
-          {/* Diamond echoes the logo mark; tucked into the corner until there is room beside the headline. */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-52 -top-52 grid size-[26rem] rotate-45 place-items-center border border-background/10 xl:right-20 xl:top-1/2 xl:-translate-y-1/2"
-          >
-            <div className="grid size-[62%] place-items-center border border-background/15">
-              <div className="size-[38%] bg-signal" />
-            </div>
-          </div>
-
           <div className="relative">
+            <pre
+              aria-hidden="true"
+              className="absolute right-0 top-0 hidden w-80 rounded-xl border border-background/15 bg-background/[0.04] p-6 font-mono text-[13px] leading-relaxed text-background/60 xl:block"
+            >
+              {HERO_CODE.map(([text, color], i) => (
+                <span key={i} className={color}>
+                  {text}
+                </span>
+              ))}
+            </pre>
             <Eyebrow className="!text-background/60">
               Software studio · Vilnius
             </Eyebrow>
-            <h1 className="mt-6 max-w-4xl text-display text-[clamp(2.5rem,7vw,6rem)] font-medium text-balance">
+            <h1 className="mt-6 max-w-4xl xl:max-w-2xl text-display text-[clamp(2.5rem,7vw,6rem)] xl:text-[5rem] font-medium text-balance">
               Software built{" "}
               <span className="italic font-light text-signal">
                 to outlast trends.
@@ -471,7 +495,9 @@ function Marquee() {
             className="flex items-center text-display text-2xl sm:text-4xl md:text-5xl font-light text-foreground/80"
           >
             {s}
-            <span className="mx-8 sm:mx-12 size-2.5 rotate-45 bg-signal" />
+            <span className="mx-8 sm:mx-12 font-mono text-[0.6em] font-medium text-signal">
+              {"//"}
+            </span>
           </span>
         ))}
       </div>
@@ -542,10 +568,9 @@ function AI() {
               key={item.title}
               className="group rounded-2xl border border-background/12 bg-background/[0.04] p-7 lg:p-10 transition-colors hover:border-signal/60"
             >
-              <span
-                aria-hidden="true"
-                className="block size-3 rotate-45 border border-signal transition-colors group-hover:bg-signal"
-              />
+              <span aria-hidden="true" className="font-mono text-signal">
+                {">_"}
+              </span>
               <h3 className="mt-8 lg:mt-12 font-display text-2xl md:text-3xl leading-tight">
                 {item.title}
               </h3>
