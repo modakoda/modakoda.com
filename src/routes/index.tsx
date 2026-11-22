@@ -523,7 +523,6 @@ const WORK_VISIBLE = 6;
 
 function Work() {
   const [expanded, setExpanded] = useState(false);
-  const shown = expanded ? WORK : WORK.slice(0, WORK_VISIBLE);
 
   return (
     <section id="work" className="py-28 lg:py-36">
@@ -542,44 +541,51 @@ function Work() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-          {shown.map((w, i) => (
-            <a
-              href={w.href}
-              target={w.href ? "_blank" : undefined}
-              rel={w.href ? "noopener noreferrer" : undefined}
-              key={i}
-              className="group block"
-            >
-              <div className="aspect-[4/3] overflow-hidden bg-background mb-5">
-                <img
-                  src={w.img}
-                  alt={w.title}
-                  loading="lazy"
-                  width={1024}
-                  height={768}
-                  className="w-full h-full object-cover [@media(hover:hover)]:grayscale transition-all duration-[1200ms] group-hover:scale-105 group-hover:grayscale-0"
-                />
-              </div>
-              <div className="flex items-baseline justify-between gap-4 mb-2">
-                <h3 className="font-display text-lg">
-                  {w.client}
-                  {w.href && <span aria-hidden="true"> ↗</span>}
-                </h3>
-                <div className="eyebrow !text-xs">{w.year}</div>
-              </div>
-              <div className="text-muted-foreground text-sm leading-relaxed">
-                {w.title}
-              </div>
-              <div className="mt-3 flex gap-2 flex-wrap">
-                <span className="eyebrow !text-[10px] px-2 py-1 border border-border rounded-full">
-                  {w.discipline}
-                </span>
-                <span className="eyebrow !text-[10px] px-2 py-1 border border-border rounded-full">
-                  {w.region}
-                </span>
-              </div>
-            </a>
-          ))}
+          {WORK.map((w, i) => {
+            // An <a> without href is not a link; cards without a URL are plain blocks.
+            const Card = w.href ? "a" : "div";
+            return (
+              <Card
+                href={w.href}
+                target={w.href ? "_blank" : undefined}
+                rel={w.href ? "noopener noreferrer" : undefined}
+                key={i}
+                // Collapsed cards stay in the prerendered HTML so crawlers see every project.
+                className={
+                  expanded || i < WORK_VISIBLE ? "group block" : "hidden"
+                }
+              >
+                <div className="aspect-[4/3] overflow-hidden bg-background mb-5">
+                  <img
+                    src={w.img}
+                    alt={w.title}
+                    loading="lazy"
+                    width={1024}
+                    height={768}
+                    className="w-full h-full object-cover [@media(hover:hover)]:grayscale transition-all duration-[1200ms] group-hover:scale-105 group-hover:grayscale-0"
+                  />
+                </div>
+                <div className="flex items-baseline justify-between gap-4 mb-2">
+                  <h3 className="font-display text-lg">
+                    {w.client}
+                    {w.href && <span aria-hidden="true"> ↗</span>}
+                  </h3>
+                  <div className="eyebrow !text-xs">{w.year}</div>
+                </div>
+                <div className="text-muted-foreground text-sm leading-relaxed">
+                  {w.title}
+                </div>
+                <div className="mt-3 flex gap-2 flex-wrap">
+                  <span className="eyebrow !text-[10px] px-2 py-1 border border-border rounded-full">
+                    {w.discipline}
+                  </span>
+                  <span className="eyebrow !text-[10px] px-2 py-1 border border-border rounded-full">
+                    {w.region}
+                  </span>
+                </div>
+              </Card>
+            );
+          })}
         </div>
 
         {WORK.length > WORK_VISIBLE && (
