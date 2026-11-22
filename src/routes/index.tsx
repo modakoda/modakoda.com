@@ -183,30 +183,6 @@ const H2 =
 const BTN =
   "inline-flex min-h-12 items-center justify-center rounded-full px-6 text-sm font-medium transition-colors";
 
-const CODE = {
-  dim: "text-background/40",
-  key: "text-signal",
-  str: "text-background",
-};
-// Decorative hero snippet as [text, colour] tokens.
-const HERO_CODE: [string, string?][] = [
-  ["// studio.ts\n", CODE.dim],
-  ["export const ", CODE.key],
-  ["studio = {\n  based: "],
-  ['"Vilnius"', CODE.str],
-  [",\n  since: "],
-  ["2016", CODE.str],
-  [",\n  sectors: [\n    "],
-  ['"insurance"', CODE.str],
-  [",\n    "],
-  ['"fintech"', CODE.str],
-  [",\n    "],
-  ['"media"', CODE.str],
-  [",\n  ],\n  outlasts: "],
-  ['"trends"', CODE.str],
-  [",\n};"],
-];
-
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -379,32 +355,21 @@ function Hero() {
     <section id="top" className="pt-20 sm:pt-24">
       <div className={WRAP}>
         <div className="relative overflow-hidden rounded-3xl bg-foreground text-background px-6 pt-14 pb-8 sm:px-12 sm:pt-20 sm:pb-12 lg:px-20 lg:pt-28 animate-rise">
-          {/* Centred between sm and xl, where there is no code panel to balance left-aligned text. */}
-          <div className="relative sm:text-center xl:text-left">
-            <pre
-              aria-hidden="true"
-              className="absolute right-0 top-0 hidden w-80 rounded-xl border border-background/15 bg-background/[0.04] p-6 font-mono text-[13px] leading-relaxed text-background/60 xl:block"
-            >
-              {HERO_CODE.map(([text, color], i) => (
-                <span key={i} className={color}>
-                  {text}
-                </span>
-              ))}
-            </pre>
-            <Eyebrow className="!text-background/60 sm:justify-center xl:justify-start">
+          <div className="relative sm:text-center">
+            <Eyebrow className="!text-background/60 sm:justify-center">
               Software studio · Vilnius
             </Eyebrow>
-            <h1 className="mt-6 max-w-4xl sm:mx-auto xl:mx-0 xl:max-w-2xl text-display text-[clamp(2.5rem,7vw,6rem)] xl:text-[5rem] font-medium text-balance">
+            <h1 className="mt-6 max-w-4xl sm:mx-auto text-display text-[clamp(2.5rem,7vw,6rem)] font-medium text-balance">
               Software built{" "}
               <span className="italic font-light text-signal">
                 to outlast trends.
               </span>
             </h1>
-            <p className="mt-6 max-w-xl sm:mx-auto xl:mx-0 text-background/70 leading-relaxed text-base sm:text-lg">
+            <p className="mt-6 max-w-xl sm:mx-auto text-background/70 leading-relaxed text-base sm:text-lg">
               Mission-critical engineering for insurance, fintech, and media.
               Based in Vilnius, serving clients internationally.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row sm:justify-center xl:justify-start gap-3">
+            <div className="mt-8 flex flex-col sm:flex-row sm:justify-center gap-3">
               <a
                 href="#contact"
                 className={`${BTN} bg-signal text-foreground hover:bg-background`}
