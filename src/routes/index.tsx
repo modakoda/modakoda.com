@@ -724,7 +724,8 @@ function Contact() {
               href="mailto:info@modakoda.com"
               className={`${BTN} mt-8 w-full sm:w-auto !min-h-14 !px-8 !text-base sm:!text-lg font-display bg-signal text-foreground hover:bg-background`}
             >
-              info@modakoda.com <span aria-hidden="true">&nbsp;→</span>
+              <span dangerouslySetInnerHTML={emailOff("info@modakoda.com")} />
+              <span aria-hidden="true">&nbsp;→</span>
             </a>
             <dl className="mt-12 sm:mt-16 grid grid-cols-2 gap-6 border-t border-background/15 pt-8 max-w-xl">
               {[
@@ -743,6 +744,12 @@ function Contact() {
     </section>
   );
 }
+
+// Cloudflare's email obfuscation rewrites addresses in the served HTML, which breaks hydration (React #418).
+// email_off opts the text out. Only pass hardcoded strings: this is raw HTML.
+const emailOff = (text: string) => ({
+  __html: `<!--email_off-->${text}<!--/email_off-->`,
+});
 
 function CopyableValue({ value }: { value: string }) {
   const [copied, setCopied] = useState(false);
@@ -764,7 +771,7 @@ function CopyableValue({ value }: { value: string }) {
       title="Click to copy"
       aria-label={`Copy ${value}`}
     >
-      <span>{value}</span>
+      <span dangerouslySetInnerHTML={emailOff(value)} />
       <span aria-live="polite" className="inline-flex">
         {copied ? (
           <span className="text-emerald-700 text-[10px] uppercase tracking-wider">
