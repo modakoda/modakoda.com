@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 import heroImg from "@/assets/hero.jpg";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
@@ -177,6 +177,13 @@ const PRINCIPLES = [
   ["Quiet", "Good systems disappear into the work they support."],
 ];
 
+const WRAP = "mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-10";
+const SECTION = "py-20 sm:py-28 lg:py-36";
+const H2 =
+  "text-display text-[clamp(2.25rem,5.5vw,4.5rem)] font-medium text-balance";
+const BTN =
+  "inline-flex min-h-12 items-center justify-center rounded-full px-6 text-sm font-medium transition-colors";
+
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -192,6 +199,21 @@ function Index() {
         <Contact />
       </main>
       <Footer />
+    </div>
+  );
+}
+
+function Eyebrow({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`eyebrow flex items-center gap-3 ${className}`}>
+      <span aria-hidden="true" className="size-1.5 rotate-45 bg-signal" />
+      {children}
     </div>
   );
 }
@@ -235,19 +257,19 @@ function Nav() {
   }, [open]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/70 border-b border-border">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 h-16 flex items-center justify-between">
-        <a href="#top" className="flex h-16 items-center group">
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
+      <div className={`${WRAP} h-16 flex items-center justify-between`}>
+        <a href="#top" className="flex h-16 items-center">
           <img
             src={modakodaLogo}
             alt="Modakoda"
             width={436}
             height={54}
-            className="h-12 w-auto max-w-[220px] object-contain"
+            className="h-9 lg:h-11 w-auto max-w-[200px] object-contain"
           />
         </a>
 
-        <nav className="hidden md:flex items-center gap-10">
+        <nav className="hidden md:flex items-center gap-5 lg:gap-9">
           {NAV.map((n) => (
             <a
               key={n.href}
@@ -262,31 +284,26 @@ function Nav() {
         <div className="flex items-center gap-3">
           <a
             href="#contact"
-            className="hidden md:inline-flex text-xs eyebrow border border-foreground/80 px-4 py-2 rounded-full hover:bg-foreground hover:text-background transition-colors"
+            className={`${BTN} max-md:hidden !min-h-10 !px-5 bg-foreground text-background hover:bg-foreground/85`}
           >
             Start a project
           </a>
           <button
             ref={buttonRef}
             onClick={() => setOpen((v) => !v)}
-            className="md:hidden relative w-8 h-8 flex items-center justify-center"
+            className="md:hidden relative -mr-2 size-11 flex items-center justify-center"
             aria-label="Toggle menu"
             aria-expanded={open}
             aria-controls="mobile-menu"
           >
-            <span className="sr-only">Menu</span>
             <div
-              className="absolute w-5 h-0.5 bg-foreground transition-all duration-300"
+              className="absolute w-6 h-0.5 bg-foreground transition-all duration-300"
               style={{
                 transform: open ? "rotate(45deg)" : "translateY(-4px)",
               }}
             />
             <div
-              className="absolute w-5 h-0.5 bg-foreground transition-all duration-300"
-              style={{ opacity: open ? 0 : 1 }}
-            />
-            <div
-              className="absolute w-5 h-0.5 bg-foreground transition-all duration-300"
+              className="absolute w-6 h-0.5 bg-foreground transition-all duration-300"
               style={{
                 transform: open ? "rotate(-45deg)" : "translateY(4px)",
               }}
@@ -299,15 +316,15 @@ function Nav() {
         <div
           id="mobile-menu"
           ref={menuRef}
-          className="md:hidden absolute top-16 left-0 right-0 bg-background border-b border-border animate-rise"
+          className="md:hidden absolute top-16 left-0 right-0 bg-background border-b border-border shadow-xl animate-rise"
         >
-          <nav className="px-6 py-6 flex flex-col gap-4">
+          <nav className="px-5 sm:px-8 pt-2 pb-6 flex flex-col">
             {NAV.map((n) => (
               <a
                 key={n.href}
                 href={n.href}
                 onClick={() => setOpen(false)}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
+                className="font-display text-2xl py-3.5 border-b border-border"
               >
                 {n.label}
               </a>
@@ -315,7 +332,7 @@ function Nav() {
             <a
               href="#contact"
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex w-fit text-xs eyebrow border border-foreground/80 px-4 py-2 rounded-full hover:bg-foreground hover:text-background transition-colors"
+              className={`${BTN} mt-6 bg-foreground text-background`}
             >
               Start a project
             </a>
@@ -327,43 +344,64 @@ function Nav() {
 }
 
 function Hero() {
+  const stats = [
+    [String(new Date().getFullYear() - 2016), "Years building"],
+    ["40+", "Shipped products"],
+    ["6", "Countries served"],
+  ];
   return (
-    <section id="top" className="relative pt-24 lg:pt-28 pb-8 lg:pb-10">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div className="relative overflow-hidden rounded-sm animate-rise">
-          <img
-            src={heroImg}
-            alt=""
-            width={1280}
-            height={720}
-            fetchPriority="high"
-            className="w-full h-[50vh] lg:h-[60vh] min-h-[360px] object-cover blur-[3px] scale-105"
-          />
-          <div className="absolute inset-0 bg-foreground/40" />
-          <div className="absolute inset-0 flex flex-col justify-end p-8 lg:p-16">
-            <h1 className="text-display text-[clamp(2.5rem,5vw,5.5rem)] font-medium leading-[1.05] text-background mb-6">
-              Software built
-              <br />
-              <span className="italic font-light">to outlast trends.</span>
+    <section id="top" className="pt-20 sm:pt-24">
+      <div className={WRAP}>
+        <div className="relative overflow-hidden rounded-3xl bg-foreground text-background px-6 pt-14 pb-8 sm:px-12 sm:pt-20 sm:pb-12 lg:px-20 lg:pt-28 animate-rise">
+          {/* Diamond echoes the logo mark; tucked into the corner until there is room beside the headline. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-52 -top-52 grid size-[26rem] rotate-45 place-items-center border border-background/10 xl:right-20 xl:top-1/2 xl:-translate-y-1/2"
+          >
+            <div className="grid size-[62%] place-items-center border border-background/15">
+              <div className="size-[38%] bg-signal" />
+            </div>
+          </div>
+
+          <div className="relative">
+            <Eyebrow className="!text-background/60">
+              Software studio · Vilnius
+            </Eyebrow>
+            <h1 className="mt-6 max-w-4xl text-display text-[clamp(2.5rem,7vw,6rem)] font-medium text-balance">
+              Software built{" "}
+              <span className="italic font-light text-signal">
+                to outlast trends.
+              </span>
             </h1>
-            <p className="max-w-xl text-background/80 leading-relaxed mb-8 text-lg">
+            <p className="mt-6 max-w-xl text-background/70 leading-relaxed text-base sm:text-lg">
               Mission-critical engineering for insurance, fintech, and media.
               Based in Vilnius, serving clients internationally.
             </p>
-            <div className="flex gap-3">
-              <a
-                href="#work"
-                className="px-5 py-2.5 rounded-full bg-background text-foreground text-sm hover:opacity-90 transition-opacity"
-              >
-                See work
-              </a>
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a
                 href="#contact"
-                className="px-5 py-2.5 rounded-full border border-background/40 text-background text-sm hover:border-background transition-colors"
+                className={`${BTN} bg-signal text-foreground hover:bg-background`}
               >
-                Get in touch
+                Start a project
+              </a>
+              <a
+                href="#work"
+                className={`${BTN} border border-background/30 hover:border-background`}
+              >
+                See our work
               </a>
             </div>
+
+            <dl className="mt-14 lg:mt-24 grid grid-cols-3 gap-4 border-t border-background/15 pt-6 sm:pt-8">
+              {stats.map(([n, l]) => (
+                <div key={l} className="flex flex-col-reverse gap-1.5">
+                  <dt className="text-xs sm:text-sm text-background/60">{l}</dt>
+                  <dd className="text-display text-3xl sm:text-5xl font-medium">
+                    {n}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </div>
@@ -380,20 +418,20 @@ function TrustedBy() {
     "Lithuania Travel",
   ];
   return (
-    <section className="py-6 border-b border-border">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
-          <span className="eyebrow shrink-0">Trusted by</span>
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-            {clients.map((name) => (
-              <span
-                key={name}
-                className="font-display text-xl md:text-2xl text-foreground/70"
-              >
-                {name}
-              </span>
-            ))}
-          </div>
+    <section className="py-8 sm:py-10 border-b border-border">
+      <div
+        className={`${WRAP} flex flex-col md:flex-row md:items-center gap-4 md:gap-10`}
+      >
+        <span className="eyebrow shrink-0">Trusted by</span>
+        <div className="flex flex-wrap items-center gap-x-7 gap-y-2 lg:justify-between lg:grow">
+          {clients.map((name) => (
+            <span
+              key={name}
+              className="font-display text-lg sm:text-2xl text-foreground/70"
+            >
+              {name}
+            </span>
+          ))}
         </div>
       </div>
     </section>
@@ -412,16 +450,17 @@ function Marquee() {
     "Intelligent workflows",
   ];
   return (
-    <section className="hairline border-y border-border py-6 overflow-hidden">
+    <section className="border-y border-border py-5 sm:py-6 overflow-hidden">
       {/* Two identical halves with per-item padding so -50% lands exactly on the second copy. */}
-      <div className="flex animate-marquee whitespace-nowrap will-change-transform">
+      <div className="flex items-center animate-marquee whitespace-nowrap will-change-transform">
         {[...items, ...items].map((s, i) => (
           <span
             key={i}
             aria-hidden={i >= items.length}
-            className="pr-16 text-display text-3xl md:text-5xl font-light text-foreground/80"
+            className="flex items-center text-display text-2xl sm:text-4xl md:text-5xl font-light text-foreground/80"
           >
-            {s} <span className="inline-block mx-6 text-foreground/30">✦</span>
+            {s}
+            <span className="mx-8 sm:mx-12 size-2.5 rotate-45 bg-signal" />
           </span>
         ))}
       </div>
@@ -429,22 +468,47 @@ function Marquee() {
   );
 }
 
+function SectionHead({
+  eyebrow,
+  title,
+  children,
+  dark,
+}: {
+  eyebrow: string;
+  title: string;
+  children?: ReactNode;
+  dark?: boolean;
+}) {
+  return (
+    <div className="mb-10 sm:mb-16 grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-5 lg:items-end">
+      <div className="lg:col-span-8">
+        <Eyebrow className={`mb-5 ${dark ? "!text-background/60" : ""}`}>
+          {eyebrow}
+        </Eyebrow>
+        <h2 className={H2}>{title}</h2>
+      </div>
+      {children && (
+        <p
+          className={`lg:col-span-4 max-w-md leading-relaxed ${dark ? "text-background/65" : "text-muted-foreground"}`}
+        >
+          {children}
+        </p>
+      )}
+    </div>
+  );
+}
+
 function AI() {
   return (
-    <section id="ai" className="py-28 lg:py-36 bg-secondary">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-20">
-          <div className="lg:col-span-4">
-            <div className="eyebrow mb-6">§ Intelligence</div>
-          </div>
-          <div className="lg:col-span-8">
-            <h2 className="text-display text-4xl md:text-6xl lg:text-7xl font-medium max-w-4xl">
-              AI that earns its place in your product.
-            </h2>
-          </div>
-        </div>
+    <section id="ai" className={`${SECTION} bg-foreground text-background`}>
+      <div className={WRAP}>
+        <SectionHead
+          dark
+          eyebrow="Intelligence"
+          title="AI that earns its place in your product."
+        />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
             {
               title: "LLM Integration",
@@ -462,18 +526,19 @@ function AI() {
               title: "Discovery & Roadmap",
               body: "Not every problem needs a model. We audit your workflows, identify high-confidence AI opportunities, and build a roadmap ranked by feasibility and return. No solutionism — just clear thinking.",
             },
-          ].map((item, i) => (
+          ].map((item) => (
             <article
-              key={i}
-              className="bg-background p-8 lg:p-10 min-h-[280px] flex flex-col justify-between group hover:bg-secondary transition-colors"
+              key={item.title}
+              className="group rounded-2xl border border-background/12 bg-background/[0.04] p-7 lg:p-10 transition-colors hover:border-signal/60"
             >
-              <div className="flex items-start justify-between">
-                <h3 className="font-display text-2xl md:text-3xl leading-tight">
-                  {item.title}
-                </h3>
-                <span className="block w-8 h-px bg-foreground/40 mt-5 group-hover:w-16 transition-all" />
-              </div>
-              <p className="mt-8 text-muted-foreground leading-relaxed text-[15px]">
+              <span
+                aria-hidden="true"
+                className="block size-3 rotate-45 border border-signal transition-colors group-hover:bg-signal"
+              />
+              <h3 className="mt-8 lg:mt-12 font-display text-2xl md:text-3xl leading-tight">
+                {item.title}
+              </h3>
+              <p className="mt-4 text-background/65 leading-relaxed">
                 {item.body}
               </p>
             </article>
@@ -486,37 +551,26 @@ function AI() {
 
 function Services() {
   return (
-    <section id="practice" className="py-28 lg:py-36">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-20">
-          <div className="lg:col-span-4">
-            <div className="eyebrow mb-6">§ Practice</div>
-          </div>
-          <div className="lg:col-span-8">
-            <h2 className="text-display text-4xl md:text-6xl lg:text-7xl font-medium max-w-3xl">
-              Three quiet disciplines, practiced with attention.
-            </h2>
-          </div>
-        </div>
+    <section id="practice" className={SECTION}>
+      <div className={WRAP}>
+        <SectionHead
+          eyebrow="Practice"
+          title="Three quiet disciplines, practiced with attention."
+        />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {SERVICES.map((s) => (
             <article
               key={s.no}
-              className="bg-background p-8 lg:p-10 min-h-[320px] flex flex-col justify-between group hover:bg-secondary transition-colors"
+              className="rounded-2xl border border-border bg-card p-7 lg:p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-foreground/5"
             >
-              <div className="flex items-start justify-between">
-                <span className="eyebrow">{s.no}</span>
-                <span className="block w-8 h-px bg-foreground/40 mt-3 group-hover:w-16 transition-all" />
-              </div>
-              <div className="mt-16">
-                <h3 className="font-display text-2xl md:text-3xl mb-4 leading-tight">
-                  {s.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed text-[15px]">
-                  {s.body}
-                </p>
-              </div>
+              <span className="font-display text-sm text-muted-foreground">
+                {s.no}
+              </span>
+              <h3 className="mt-8 md:mt-20 font-display text-2xl md:text-3xl mb-4 leading-tight">
+                {s.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">{s.body}</p>
             </article>
           ))}
         </div>
@@ -531,22 +585,14 @@ function Work() {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <section id="work" className="py-28 lg:py-36">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div className="flex items-end justify-between mb-16 flex-wrap gap-6">
-          <div>
-            <div className="eyebrow mb-6">§ Selected work</div>
-            <h2 className="text-display text-4xl md:text-6xl lg:text-7xl font-medium">
-              Proven results.
-            </h2>
-          </div>
-          <p className="max-w-sm text-muted-foreground">
-            A selection of recent engagements across insurance, fintech,
-            infrastructure, compliance, and AI. Delivered on scope and on time.
-          </p>
-        </div>
+    <section id="work" className={SECTION}>
+      <div className={WRAP}>
+        <SectionHead eyebrow="Selected work" title="Proven results.">
+          A selection of recent engagements across insurance, fintech,
+          infrastructure, compliance, and AI. Delivered on scope and on time.
+        </SectionHead>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 lg:gap-x-8 lg:gap-y-16">
           {WORK.map((w, i) => {
             // An <a> without href is not a link; cards without a URL are plain blocks.
             const Card = w.href ? "a" : "div";
@@ -561,7 +607,7 @@ function Work() {
                   expanded || i < WORK_VISIBLE ? "group block" : "hidden"
                 }
               >
-                <div className="aspect-[4/3] overflow-hidden bg-background mb-5">
+                <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-secondary mb-5">
                   <img
                     src={w.img}
                     alt={w.title}
@@ -571,23 +617,32 @@ function Work() {
                     className="w-full h-full object-cover [@media(hover:hover)]:grayscale transition-all duration-[1200ms] group-hover:scale-105 group-hover:grayscale-0"
                   />
                 </div>
-                <div className="flex items-baseline justify-between gap-4 mb-2">
-                  <h3 className="font-display text-lg">
+                <div className="flex items-baseline justify-between gap-4 mb-1.5">
+                  <h3 className="font-display text-xl">
                     {w.client}
-                    {w.href && <span aria-hidden="true"> ↗</span>}
+                    {w.href && (
+                      <span aria-hidden="true" className="text-signal">
+                        {" "}
+                        ↗
+                      </span>
+                    )}
                   </h3>
-                  <div className="eyebrow !text-xs">{w.year}</div>
+                  <div className="text-sm text-muted-foreground tabular-nums">
+                    {w.year}
+                  </div>
                 </div>
-                <div className="text-muted-foreground text-sm leading-relaxed">
+                <div className="text-muted-foreground leading-relaxed">
                   {w.title}
                 </div>
                 <div className="mt-3 flex gap-2 flex-wrap">
-                  <span className="eyebrow !text-[10px] px-2 py-1 border border-border rounded-full">
-                    {w.discipline}
-                  </span>
-                  <span className="eyebrow !text-[10px] px-2 py-1 border border-border rounded-full">
-                    {w.region}
-                  </span>
+                  {[w.discipline, w.region].map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs text-muted-foreground px-2.5 py-1 bg-secondary rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </Card>
             );
@@ -595,11 +650,11 @@ function Work() {
         </div>
 
         {WORK.length > WORK_VISIBLE && (
-          <div className="mt-16 flex justify-center">
+          <div className="mt-12 sm:mt-16 flex justify-center">
             <button
               onClick={() => setExpanded((v) => !v)}
               aria-expanded={expanded}
-              className="text-xs eyebrow border border-foreground/80 px-4 py-2 rounded-full hover:bg-foreground hover:text-background transition-colors"
+              className={`${BTN} w-full sm:w-auto border border-foreground/80 hover:bg-foreground hover:text-background`}
             >
               {expanded ? "Show less" : `Show all ${WORK.length} projects`}
             </button>
@@ -612,48 +667,32 @@ function Work() {
 
 function Company() {
   return (
-    <section id="company" className="py-28 lg:py-36 bg-secondary">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+    <section id="company" className={`${SECTION} bg-secondary`}>
+      <div className={WRAP}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5 lg:sticky lg:top-28 self-start">
-            <div className="eyebrow mb-6">§ Company</div>
-            <h2 className="text-display text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.02]">
+            <Eyebrow className="mb-5">Company</Eyebrow>
+            <h2 className="text-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-medium leading-[1.02] text-balance">
               Built on precision. Measured by results.
             </h2>
-            <p className="mt-8 text-muted-foreground text-lg leading-relaxed max-w-md">
+            <p className="mt-6 sm:mt-8 text-muted-foreground text-lg leading-relaxed max-w-md">
               Since 2016, Modakoda has delivered mission-critical software for
               companies in six countries. We partner with a select number of
               clients each year — the kind whose products outlast the trends
               around them.
             </p>
           </div>
-          <div className="lg:col-span-7">
-            <ul className="divide-y divide-border border-t border-b border-border">
-              {PRINCIPLES.map(([h, b]) => (
-                <li
-                  key={h}
-                  className="py-8 grid grid-cols-[auto_1fr] md:grid-cols-[200px_1fr] gap-6 md:gap-12 items-baseline"
-                >
-                  <div className="font-display text-xl md:text-2xl">{h}</div>
-                  <p className="text-muted-foreground leading-relaxed">{b}</p>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-12 grid grid-cols-3 gap-6">
-              {[
-                [String(new Date().getFullYear() - 2016), "Years building"],
-                ["40+", "Shipped products"],
-                ["6", "Countries served"],
-              ].map(([n, l]) => (
-                <div key={l}>
-                  <div className="text-display text-4xl md:text-5xl font-medium">
-                    {n}
-                  </div>
-                  <div className="eyebrow mt-2">{l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <ul className="lg:col-span-7 divide-y divide-border border-y border-border">
+            {PRINCIPLES.map(([h, b]) => (
+              <li
+                key={h}
+                className="py-6 sm:py-8 grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-2 sm:gap-12 items-baseline"
+              >
+                <div className="font-display text-xl md:text-2xl">{h}</div>
+                <p className="text-muted-foreground leading-relaxed">{b}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
@@ -662,45 +701,42 @@ function Company() {
 
 function Contact() {
   return (
-    <section
-      id="contact"
-      className="py-28 lg:py-36 bg-foreground text-background"
-    >
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div className="eyebrow !text-background/60 mb-10">
-          § Correspondence
-        </div>
-        <h2 className="text-display text-5xl md:text-7xl lg:text-8xl font-medium max-w-5xl">
-          Have something
-          <br />
-          worth building?
-        </h2>
-        <p className="mt-8 max-w-xl text-background/70 text-lg leading-relaxed">
-          We accept a select number of new engagements each quarter. Tell us
-          about your product, your team, and the problem you are trying to
-          solve. We typically respond within one business day.
-        </p>
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-background/15 pt-10">
-          <div>
-            <div className="eyebrow !text-background/50 mb-3">
-              Project enquiries
-            </div>
+    <section id="contact" className="pt-12 sm:pt-16">
+      <div className={WRAP}>
+        <div className="relative overflow-hidden rounded-3xl bg-foreground text-background px-6 py-14 sm:p-12 lg:p-20">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-40 -bottom-40 size-80 rotate-45 border border-background/10"
+          />
+          <div className="relative">
+            <Eyebrow className="!text-background/60 mb-6">
+              Correspondence
+            </Eyebrow>
+            <h2 className="text-display text-[clamp(2.5rem,7vw,6rem)] font-medium max-w-5xl text-balance">
+              Have something worth building?
+            </h2>
+            <p className="mt-6 sm:mt-8 max-w-xl text-background/70 text-base sm:text-lg leading-relaxed">
+              We accept a select number of new engagements each quarter. Tell us
+              about your product, your team, and the problem you are trying to
+              solve. We typically respond within one business day.
+            </p>
             <a
               href="mailto:info@modakoda.com"
-              className="font-display text-xl md:text-2xl underline underline-offset-4 decoration-background/30 hover:decoration-background"
+              className={`${BTN} mt-8 w-full sm:w-auto !min-h-14 !px-8 !text-base sm:!text-lg font-display bg-signal text-foreground hover:bg-background`}
             >
-              info@modakoda.com
+              info@modakoda.com <span aria-hidden="true">&nbsp;→</span>
             </a>
-          </div>
-          <div>
-            <div className="eyebrow !text-background/50 mb-3">Company</div>
-            <div className="font-display text-xl md:text-2xl">
-              Vilnius, Lithuania
-            </div>
-          </div>
-          <div>
-            <div className="eyebrow !text-background/50 mb-3">Hours</div>
-            <div className="font-display text-xl md:text-2xl">Mon–Fri</div>
+            <dl className="mt-12 sm:mt-16 grid grid-cols-2 gap-6 border-t border-background/15 pt-8 max-w-xl">
+              {[
+                ["Company", "Vilnius, Lithuania"],
+                ["Hours", "Mon–Fri"],
+              ].map(([l, v]) => (
+                <div key={l}>
+                  <dt className="eyebrow !text-background/50 mb-2">{l}</dt>
+                  <dd className="font-display text-lg sm:text-2xl">{v}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </div>
@@ -724,7 +760,7 @@ function CopyableValue({ value }: { value: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="inline-flex items-center gap-1 hover:text-foreground transition-colors cursor-pointer"
+      className="inline-flex min-h-8 items-center gap-1 hover:text-foreground transition-colors cursor-pointer"
       title="Click to copy"
       aria-label={`Copy ${value}`}
     >
@@ -758,11 +794,13 @@ function CopyableValue({ value }: { value: string }) {
 
 function Footer() {
   return (
-    <footer className="py-10 border-t border-border">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10 flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
+    <footer className="py-8 sm:py-10">
+      <div
+        className={`${WRAP} flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-muted-foreground`}
+      >
         <div>
           <div>© {new Date().getFullYear()} Modakoda. All rights reserved.</div>
-          <div className="mt-1 flex items-center gap-2">
+          <div className="mt-1 flex flex-wrap items-center gap-x-2">
             <span>
               Reg. code <CopyableValue value="304307868" />
             </span>
@@ -772,9 +810,7 @@ function Footer() {
             </span>
           </div>
         </div>
-        <div className="flex gap-6">
-          <CopyableValue value="info@modakoda.com" />
-        </div>
+        <CopyableValue value="info@modakoda.com" />
       </div>
     </footer>
   );
