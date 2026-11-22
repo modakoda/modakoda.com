@@ -379,7 +379,8 @@ function Hero() {
     <section id="top" className="pt-20 sm:pt-24">
       <div className={WRAP}>
         <div className="relative overflow-hidden rounded-3xl bg-foreground text-background px-6 pt-14 pb-8 sm:px-12 sm:pt-20 sm:pb-12 lg:px-20 lg:pt-28 animate-rise">
-          <div className="relative">
+          {/* Centred between sm and xl, where there is no code panel to balance left-aligned text. */}
+          <div className="relative sm:text-center xl:text-left">
             <pre
               aria-hidden="true"
               className="absolute right-0 top-0 hidden w-80 rounded-xl border border-background/15 bg-background/[0.04] p-6 font-mono text-[13px] leading-relaxed text-background/60 xl:block"
@@ -390,20 +391,20 @@ function Hero() {
                 </span>
               ))}
             </pre>
-            <Eyebrow className="!text-background/60">
+            <Eyebrow className="!text-background/60 sm:justify-center xl:justify-start">
               Software studio · Vilnius
             </Eyebrow>
-            <h1 className="mt-6 max-w-4xl xl:max-w-2xl text-display text-[clamp(2.5rem,7vw,6rem)] xl:text-[5rem] font-medium text-balance">
+            <h1 className="mt-6 max-w-4xl sm:mx-auto xl:mx-0 xl:max-w-2xl text-display text-[clamp(2.5rem,7vw,6rem)] xl:text-[5rem] font-medium text-balance">
               Software built{" "}
               <span className="italic font-light text-signal">
                 to outlast trends.
               </span>
             </h1>
-            <p className="mt-6 max-w-xl text-background/70 leading-relaxed text-base sm:text-lg">
+            <p className="mt-6 max-w-xl sm:mx-auto xl:mx-0 text-background/70 leading-relaxed text-base sm:text-lg">
               Mission-critical engineering for insurance, fintech, and media.
               Based in Vilnius, serving clients internationally.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+            <div className="mt-8 flex flex-col sm:flex-row sm:justify-center xl:justify-start gap-3">
               <a
                 href="#contact"
                 className={`${BTN} bg-signal text-foreground hover:bg-background`}
