@@ -386,7 +386,10 @@ function Hero() {
 
             <dl className="mt-14 lg:mt-24 grid grid-cols-3 gap-4 border-t border-background/15 pt-6 sm:pt-8">
               {stats.map(([n, l]) => (
-                <div key={l} className="flex flex-col-reverse justify-end gap-1.5">
+                <div
+                  key={l}
+                  className="flex flex-col-reverse justify-end gap-1.5"
+                >
                   <dt className="text-xs sm:text-sm text-background/60">{l}</dt>
                   <dd className="text-display text-3xl sm:text-5xl font-medium">
                     {n}
@@ -713,9 +716,9 @@ function Contact() {
             </div>
             <div>
               <p className="mt-6 sm:mt-8 max-w-xl text-background/70 text-base sm:text-lg leading-relaxed">
-                We accept a select number of new engagements each quarter. Tell us
-                about your product, your team, and the problem you are trying to
-                solve. We typically respond within one business day.
+                We accept a select number of new engagements each quarter. Tell
+                us about your product, your team, and the problem you are trying
+                to solve. We typically respond within one business day.
               </p>
               <a
                 href="mailto:info@modakoda.com"
