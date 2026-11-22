@@ -696,7 +696,7 @@ function Contact() {
   return (
     <section id="contact" className="pt-12 sm:pt-16">
       <div className={WRAP}>
-        <div className="relative overflow-hidden rounded-3xl bg-foreground text-background px-6 py-14 sm:p-12 lg:p-20">
+        <div className="relative overflow-clip rounded-3xl bg-foreground text-background px-6 py-14 sm:p-12 lg:p-20">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -right-40 -bottom-40 size-80 rotate-45 border border-background/10"
