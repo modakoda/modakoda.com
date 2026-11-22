@@ -8,7 +8,6 @@ import work4 from "@/assets/work-4.jpg";
 import work5 from "@/assets/work-5.jpg";
 import work6 from "@/assets/work-6.jpg";
 import work7 from "@/assets/work-7.webp";
-import modakodaLogo from "@/assets/modakoda-logo.png";
 
 const SITE_URL = "https://modakoda.com";
 const DESCRIPTION =
@@ -183,6 +182,17 @@ const H2 =
   "text-display text-[clamp(2.25rem,5.5vw,4.5rem)] font-medium text-balance";
 const BTN =
   "inline-flex min-h-12 items-center justify-center rounded-full px-6 text-sm font-medium transition-colors";
+const LOGO_DIAMOND = (
+  <svg viewBox="0 0 100 100" className="size-[0.82em]">
+    <path
+      d="M50 8 92 50 50 92 8 50Z"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="13"
+    />
+    <path d="M50 34 66 50 50 66 34 50Z" className="fill-signal" />
+  </svg>
+);
 
 function Index() {
   return (
@@ -260,13 +270,14 @@ function Nav() {
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
       <div className={`${WRAP} h-16 flex items-center justify-between`}>
         <a href="#top" className="flex h-16 items-center">
-          <img
-            src={modakodaLogo}
-            alt="Modakoda"
-            width={436}
-            height={54}
-            className="h-9 lg:h-11 w-auto max-w-[200px] object-contain"
-          />
+          <span className="sr-only">Modakoda</span>
+          {/* Same diamond as public/favicon.svg stands in for each O. */}
+          <span
+            aria-hidden="true"
+            className="flex items-center gap-[0.08em] font-display text-2xl lg:text-[1.75rem] font-semibold leading-none tracking-[0.06em]"
+          >
+            M{LOGO_DIAMOND}DAK{LOGO_DIAMOND}DA
+          </span>
         </a>
 
         <nav className="hidden md:flex items-center gap-5 lg:gap-9">
