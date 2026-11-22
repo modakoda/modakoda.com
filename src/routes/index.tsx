@@ -634,7 +634,7 @@ function Work() {
                   expanded || i < WORK_VISIBLE ? "group block" : "hidden"
                 }
               >
-                <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-secondary mb-5">
+                <div className="aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-secondary mb-5">
                   <img
                     src={w.img}
                     alt={w.title}
